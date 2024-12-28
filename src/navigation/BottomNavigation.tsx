@@ -3,12 +3,13 @@ import { View, TouchableOpacity, StyleSheet, Text } from 'react-native';
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackNavigationProp } from './types'; // Import your types
+import { COLORS, SPACING, FONT_SIZES } from '../utils/constant';
 
 const BottomNav = () => {
   const navigation = useNavigation<RootStackNavigationProp>();
 
   const ICON_SIZE = 28;
-  const ICON_COLOR = 'black';
+  const ICON_COLOR = COLORS.light.text;
 
   return (
     <View style={styles.navbar}>
@@ -66,22 +67,23 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     borderTopWidth: 1,
-    borderTopColor: '#ccc',
+    borderTopColor: COLORS.light.border,
     position: 'absolute',
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.light.background,
     zIndex: 100,
-    paddingVertical: 8,
+    height: 60, // Replace with an appropriate value
+    paddingVertical: SPACING.small,
   },
   iconContainer: {
     alignItems: 'center',
   },
   iconLabel: {
-    fontSize: 12,
-    color: 'black',
-    marginTop: 4,
+    fontSize: FONT_SIZES.small,
+    color: COLORS.light.text,
+    marginTop: SPACING.small / 2,
   },
 });
 

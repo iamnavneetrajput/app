@@ -1,26 +1,21 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-} from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import * as Progress from 'react-native-progress'; // Progress bar library
-import { useNavigation, useFocusEffect } from '@react-navigation/native'; // Import navigation and useFocusEffect
-import ItemsFrame from '../components/ItemsFrame'; // Your ItemsFrame component for rendering articles
+import * as Progress from 'react-native-progress';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
+import ItemsFrame from '../components/ItemsFrame';
+import { COLORS, SPACING, FONT_SIZES } from '../utils/constant';
 
 export default function RecentScreen() {
   const [recents, setRecents] = useState<{ id: string; [key: string]: any }[]>([]);
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
-  const navigation = useNavigation(); // Initialize navigation
+  const navigation = useNavigation();
 
   const fetchRecents = async () => {
     setLoading(true);
     setProgress(0);
 
-    // Simulate loading process with progress updates
     const interval = setInterval(() => {
       setProgress((prev) => {
         const next = prev + 0.1;
@@ -59,29 +54,24 @@ export default function RecentScreen() {
   };
 
   const handleSelectItem = (item: { id: string }) => {
-    // Navigate to ArticleScreen and pass the selected item's id
     navigation.navigate('ArticleScreen', { id: item.id });
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Recent Items</Text>
-
-      {/* Progress Bar */}
       {loading && (
         <View style={styles.progressContainer}>
           <Progress.Bar
             progress={progress}
             width={null}
-            color="#3498db"
+            color={COLORS.light.primary}
             height={8}
             borderRadius={4}
           />
           <Text style={styles.loadingText}>Loading...</Text>
         </View>
       )}
-
-      {/* Recent Items List */}
       {!loading && recents.length > 0 ? (
         <FlatList
           data={recents}
@@ -89,9 +79,9 @@ export default function RecentScreen() {
           renderItem={({ item }) => (
             <ItemsFrame
               item={item}
-              onPress={() => handleSelectItem(item)} // Navigate on press
+              onPress={() => handleSelectItem(item)}
               onDelete={() => eraseRecentItem(item.id)}
-              showDateAndCategory={true} // You can pass this flag to ItemsFrame to show date and category
+              showDateAndCategory={true}
             />
           )}
         />
@@ -105,27 +95,27 @@ export default function RecentScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    padding: 16,
+    backgroundColor: COLORS.light.background,
+    padding: SPACING.medium,
   },
   title: {
-    fontSize: 18,
+    fontSize: FONT_SIZES.large,
     fontWeight: 'bold',
-    marginBottom: 16,
+    marginBottom: SPACING.medium,
   },
   progressContainer: {
-    marginVertical: 16,
+    marginVertical: SPACING.medium,
   },
   loadingText: {
-    marginTop: 8,
+    marginTop: SPACING.small,
     textAlign: 'center',
-    color: 'gray',
-    fontSize: 14,
+    color: COLORS.light.secondaryText,
+    fontSize: FONT_SIZES.small,
   },
   noRecents: {
     textAlign: 'center',
-    fontSize: 16,
-    color: 'gray',
-    marginTop: 20,
+    fontSize: FONT_SIZES.medium,
+    color: COLORS.light.secondaryText,
+    marginTop: SPACING.large,
   },
 });

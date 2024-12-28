@@ -1,30 +1,23 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, Button } from 'react-native';
 import { RouteProp, useRoute } from '@react-navigation/native';
-import cardData from '../Data/DummyDataCard'; // Your dummy data
+import cardData from '../Data/DummyDataCard';
+import { COLORS, SPACING, FONT_SIZES } from '../utils/constant';
 
-// Define the route type for ArticleScreen with an expected id parameter
 type ArticleScreenRouteProp = RouteProp<{ ArticleScreen: { id: string } }, 'ArticleScreen'>;
 
 const ArticleScreen = () => {
-  const route = useRoute<ArticleScreenRouteProp>(); // Get route params
-  const { id } = route.params; // Get the id from the params
-
-  // Find the article by id
+  const route = useRoute<ArticleScreenRouteProp>();
+  const { id } = route.params;
   const article = cardData.find(item => item.id === id);
 
-  // If article not found, fallback to HomeScreen content or placeholder
   if (!article) {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Article not found</Text>
         <Text style={styles.date}>This article is unavailable.</Text>
-        
-        {/* Show default HomeScreen-like content */}
         <Text style={styles.placeholderTitle}>Here is some recommended content:</Text>
         <Text style={styles.content}>Check out the latest posts from our home page!</Text>
-
-        {/* Optionally, you could add a button to navigate back to the HomeScreen */}
         <Button title="Go to Home" onPress={() => { /* Navigation logic to Home screen */ }} />
       </View>
     );
@@ -43,27 +36,27 @@ const ArticleScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
+    padding: SPACING.medium,
   },
   title: {
-    fontSize: 24,
+    fontSize: FONT_SIZES.xLarge,
     fontWeight: 'bold',
-    marginBottom: 8,
+    marginBottom: SPACING.small,
   },
   date: {
-    fontSize: 14,
-    color: '#888',
-    marginBottom: 16,
+    fontSize: FONT_SIZES.small,
+    color: COLORS.light.secondaryText,
+    marginBottom: SPACING.medium,
   },
   content: {
-    fontSize: 16,
+    fontSize: FONT_SIZES.medium,
     lineHeight: 24,
-    color: '#333',
+    color: COLORS.light.text,
   },
   placeholderTitle: {
-    fontSize: 20,
+    fontSize: FONT_SIZES.large,
     fontWeight: 'bold',
-    marginTop: 16,
+    marginTop: SPACING.medium,
   },
 });
 

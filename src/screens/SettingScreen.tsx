@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Switch, Modal, FlatList, SafeAreaView } from 'react-native';
+import { COLORS } from '../utils/constant';
 
 const SettingsScreen = () => {
   const [isNightMode, setNightMode] = useState(false);
@@ -107,7 +108,7 @@ const SettingsScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f8f9fa',
+    backgroundColor: COLORS.light.background,
     paddingHorizontal: 16,
     paddingVertical: 20,
   },

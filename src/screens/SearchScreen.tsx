@@ -12,6 +12,7 @@ import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import ItemsFrame from '../components/ItemsFrame'; // Import reusable ItemsFrame component
 import { useNavigation } from '@react-navigation/native'; // Import useNavigation
 import cardData from '../Data/DummyDataCard'; // Import the cardData
+import { COLORS, SPACING, FONT_SIZES } from '../utils/constant';
 
 export default function SearchScreen() {
   const navigation = useNavigation(); // Initialize navigation
@@ -139,37 +140,37 @@ export default function SearchScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    padding: 16,
+    backgroundColor: COLORS.light.background,
+    padding: SPACING.medium,
   },
   searchBar: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#f0f0f0',
-    borderRadius: 8,
-    paddingHorizontal: 12,
-    paddingVertical: 4,
-    marginBottom: 8,
+    borderRadius: SPACING.xmedium,
+    paddingHorizontal: SPACING.medium,
+    paddingVertical: SPACING.xsmall,
+    marginBottom: SPACING.small,
   },
   icon: {
-    marginRight: 8,
+    marginRight: SPACING.small,
   },
   input: {
     flex: 1,
-    fontSize: 16,
+    fontSize: FONT_SIZES.medium,
   },
   noResults: {
     textAlign: 'center',
-    marginTop: 20,
-    fontSize: 16,
-    color: 'gray',
+    marginTop: SPACING.xlarge,
+    fontSize: FONT_SIZES.medium,
+    color: COLORS.dark.secondaryText,
   },
   clearButton: {
     alignSelf: 'flex-end',
-    marginTop: 8,
+    marginTop: SPACING.small,
   },
   clearText: {
-    fontSize: 14,
+    fontSize: FONT_SIZES.medium,
     // color: 'red',
   },
 });

@@ -9,6 +9,7 @@ import {
   Image,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { COLORS, SPACING, FONT_SIZES } from '../utils/constant';
 
 // Import Card Data
 import cardData from '../Data/DummyDataCard';
@@ -136,7 +137,7 @@ const MainContent = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.light.background,
   },
   filterBar: {
     flexDirection: 'row',

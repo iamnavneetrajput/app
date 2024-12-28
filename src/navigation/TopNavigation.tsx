@@ -1,43 +1,36 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { FontAwesome, Ionicons, MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackNavigationProp } from './types';
+import { COLORS, SPACING, FONT_SIZES } from '../utils/constant';
 
 const TopNav = () => {
   const navigation = useNavigation<RootStackNavigationProp>();
 
   return (
     <View style={styles.navbar}>
-      {/* Left Section for Static Title */}
       <View style={styles.leftSection}>
         <Text style={styles.title}>Intelli</Text>
       </View>
-
-      {/* Right Section with navigation buttons */}
       <View style={styles.rightSection}>
-        {/* Notifications Button */}
         <TouchableOpacity
           style={styles.iconButton}
           onPress={() => navigation.navigate('Notifications')}
         >
-          <MaterialCommunityIcons name="bell-outline" size={24} color="black" />
+          <MaterialCommunityIcons name="bell-outline" size={24} color={COLORS.light.text} />
         </TouchableOpacity>
-
-        {/* Recent Button */}
         <TouchableOpacity
           style={styles.iconButton}
           onPress={() => navigation.navigate('RecentScreen')}
         >
-          <MaterialCommunityIcons name="progress-clock" size={24} color="black" />
+          <MaterialCommunityIcons name="progress-clock" size={24} color={COLORS.light.text} />
         </TouchableOpacity>
-
-        {/* Settings Button */}
         <TouchableOpacity
           style={styles.iconButton}
           onPress={() => navigation.navigate('Settings')}
         >
-          <Ionicons name="settings-outline" size={24} color="black" />
+          <Ionicons name="settings-outline" size={24} color={COLORS.light.text} />
         </TouchableOpacity>
       </View>
     </View>
@@ -49,26 +42,26 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
+    paddingHorizontal: SPACING.medium,
+    paddingVertical: SPACING.small,
     borderBottomWidth: 1,
-    borderBottomColor: '#ddd',
-    backgroundColor: '#fff',
+    borderBottomColor: COLORS.light.border,
+    backgroundColor: COLORS.light.background,
   },
   leftSection: {
-    flex: 1, // Allocate space for the title on the left
+    flex: 1,
   },
   title: {
-    fontSize: 18,
+    fontSize: FONT_SIZES.large,
     fontWeight: 'bold',
-    color: 'black',
+    color: COLORS.light.text,
   },
   rightSection: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   iconButton: {
-    marginLeft: 16,
+    marginLeft: SPACING.medium,
   },
 });
 
