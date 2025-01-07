@@ -8,9 +8,11 @@ export type RootStackParamList = {
   Search: undefined; // No params for Search
   Profile: undefined; // No params for Profile
   Settings: undefined; // No params for settings
-  Notifications: undefined; // No params for Notifications
+  Notification: undefined; // No params for Notifications
   RecentScreen: undefined; // No params for Recent
+  Auth: undefined; // No params for Auth
   Saved: undefined; // No params for Saved
+  PrebuiltPhoto: undefined; // No params for PrebuiltPhoto
   ArticleScreen: { item: { id: string; title: string; description: string; category: string; date: string; image: string } }; // ArticleScreen with item param
 };
 

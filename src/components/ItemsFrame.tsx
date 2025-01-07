@@ -16,6 +16,8 @@ interface ItemsFrameProps {
     onDelete?: () => void;
     showHeartIcon?: boolean;
     showDateAndCategory?: boolean;
+    showdescription?: string;
+    showimage?: string;
 }
 
 export default function ItemsFrame({
@@ -24,13 +26,15 @@ export default function ItemsFrame({
     onDelete,
     showHeartIcon,
     showDateAndCategory,
+    showdescription,
+    showimage,
 }: ItemsFrameProps) {
     return (
         <TouchableOpacity style={styles.card} onPress={onPress}>
-            <Image source={{ uri: item.image }} style={styles.cardImage} />
+            {showimage && <Image source={{ uri: item.image }} style={styles.cardImage} />}
             <View style={styles.cardContent}>
                 <Text style={styles.title}>{item.title}</Text>
-                <Text style={styles.description}>{item.description}</Text>
+                {showdescription && <Text style={styles.description}>{item.description}</Text>}
                 {showDateAndCategory && (
                     <View style={styles.dateCategoryContainer}>
                         <Text style={styles.category}>{item.category}</Text>
@@ -96,7 +100,7 @@ const styles = StyleSheet.create({
     },
     heartIcon: {
         marginLeft: 8,
-        marginTop: -52,
+        marginTop: -24,
         alignSelf: 'center',
     },
 });

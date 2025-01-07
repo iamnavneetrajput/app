@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Switch, Modal, FlatList, SafeAreaView } from 'react-native';
 import { COLORS } from '../utils/constant';
+import { Ionicons } from '@expo/vector-icons';
 
 const SettingsScreen = () => {
   const [isNightMode, setNightMode] = useState(false);
@@ -71,13 +72,16 @@ const SettingsScreen = () => {
       {/* Add Accounts Section */}
       <View style={styles.accountSection}>
         <TouchableOpacity style={styles.accountButton}>
-          <Text style={styles.accountText}>+ Add Facebook Account</Text>
+          <Ionicons name="logo-facebook" size={20} color="#fff" />
+          <Text style={styles.accountText}>Add Facebook Account</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.accountButton}>
-          <Text style={styles.accountText}>+ Add Instagram Account</Text>
+          <Ionicons name="logo-instagram" size={20} color="#fff"/>
+          <Text style={styles.accountText}>Add Instagram Account</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.accountButton}>
-          <Text style={styles.accountText}>+ Add X Account</Text>
+          <Ionicons name="logo-twitter" size={20} color="#fff"/>
+          <Text style={styles.accountText}>Add X Account</Text>
         </TouchableOpacity>
       </View>
 
@@ -132,11 +136,13 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   accountButton: {
+    flexDirection: 'row',
     backgroundColor: '#4A90E2',
     borderRadius: 8,
     paddingVertical: 12,
     marginBottom: 10,
     alignItems: 'center',
+    paddingLeft:20,
   },
   accountText: {
     color: '#fff',
@@ -146,6 +152,11 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingHorizontal: 16,
   },
+
+  // icon{
+    
+  // },
+
   modalContainer: {
     flex: 1,
     justifyContent: 'center',

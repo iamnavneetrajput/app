@@ -1,22 +1,29 @@
 import React from 'react';
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useNavigationState } from '@react-navigation/native';
 import { RootStackNavigationProp } from './types';
 import { COLORS, SPACING, FONT_SIZES } from '../utils/constant';
+import DynamicTitle from './DynamicTitle';
 
 const TopNav = () => {
   const navigation = useNavigation<RootStackNavigationProp>();
+  const currentRoute = useNavigationState((state) => {
+    if (!state || !state.routes || state.index === undefined) {
+      return 'Home';
+    }
+    return state.routes[state.index].name;
+  });
 
   return (
     <View style={styles.navbar}>
       <View style={styles.leftSection}>
-        <Text style={styles.title}>Intelli</Text>
+        <DynamicTitle title={currentRoute} />
       </View>
       <View style={styles.rightSection}>
         <TouchableOpacity
           style={styles.iconButton}
-          onPress={() => navigation.navigate('Notifications')}
+          onPress={() => navigation.navigate('Notification')}
         >
           <MaterialCommunityIcons name="bell-outline" size={24} color={COLORS.light.text} />
         </TouchableOpacity>

@@ -1,6 +1,6 @@
 export const COLORS = {
     light: {
-      primary: '#007BFF',
+      primary: '#1E90FF',
       background: '#FFFFFF',
       border: '#CCC',
       text: '#333333',
@@ -30,10 +30,13 @@ export const FONT_SIZES = {
     medium: 16,
     large: 20,
     xLarge: 24,
+    xxLarge: 32,
 };
 
 export const BORDERS = {
     radius: 8,
+    radiusLarge: 16,
+    radiusXLarge: 24,
     width: 1,
 };
 

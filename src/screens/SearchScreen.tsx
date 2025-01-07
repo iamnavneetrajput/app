@@ -113,12 +113,6 @@ export default function SearchScreen() {
       {/* Search History */}
       {!isFocused && history.length > 0 && (
         <>
-          <TouchableOpacity onPress={eraseAllHistory} style={styles.clearButton}>
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <MaterialIcons name="clear-all" size={20} color="gray" />
-              <Text style={styles.clearText}> Clear All</Text>
-            </View>
-          </TouchableOpacity>
           <FlatList
             data={history}
             keyExtractor={(item) => item.id}
@@ -131,6 +125,12 @@ export default function SearchScreen() {
               />
             )}
           />
+          {/* <TouchableOpacity onPress={eraseAllHistory} style={styles.clearButton}>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <MaterialIcons name="clear-all" size={20} color="gray" />
+              <Text style={styles.clearText}> Clear All</Text>
+            </View>
+          </TouchableOpacity> */}
         </>
       )}
     </View>

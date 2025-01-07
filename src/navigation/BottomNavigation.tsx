@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, TouchableOpacity, StyleSheet, Text } from 'react-native';
-import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons, SimpleLineIcons, AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackNavigationProp } from './types'; // Import your types
 import { COLORS, SPACING, FONT_SIZES } from '../utils/constant';
@@ -18,7 +18,7 @@ const BottomNav = () => {
         style={styles.iconContainer}
         onPress={() => navigation.navigate('Home')}
       >
-        <MaterialIcons name="home" size={ICON_SIZE} color={ICON_COLOR} />
+        <AntDesign name="home" size={28} color={ICON_COLOR} />
         <Text style={styles.iconLabel}>Home</Text>
       </TouchableOpacity>
 
@@ -27,16 +27,16 @@ const BottomNav = () => {
         style={styles.iconContainer}
         onPress={() => navigation.navigate('Search')}
       >
-        <MaterialIcons name="search" size={ICON_SIZE} color={ICON_COLOR} />
+        <Ionicons name="search-outline" size={ICON_SIZE} color={ICON_COLOR} />
         <Text style={styles.iconLabel}>Search</Text>
       </TouchableOpacity>
 
       {/* Trending Button */}
       <TouchableOpacity
         style={styles.iconContainer}
-        onPress={() => navigation.navigate('Trending')}
+        onPress={() => navigation.navigate('PrebuiltPhoto')}
       >
-        <MaterialCommunityIcons name="fire" size={ICON_SIZE} color={ICON_COLOR} />
+        <SimpleLineIcons name="fire" size={ICON_SIZE} color={ICON_COLOR} />
         <Text style={styles.iconLabel}>Trending</Text>
       </TouchableOpacity>
 
@@ -45,16 +45,16 @@ const BottomNav = () => {
         style={styles.iconContainer}
         onPress={() => navigation.navigate('Saved')}
       >
-        <MaterialIcons name="bookmark-outline" size={ICON_SIZE} color={ICON_COLOR} />
+        <Ionicons name="bookmark-outline" size={ICON_SIZE} color={ICON_COLOR} />
         <Text style={styles.iconLabel}>Saved</Text>
       </TouchableOpacity>
 
       {/* Profile Button */}
       <TouchableOpacity
         style={styles.iconContainer}
-        onPress={() => navigation.navigate('Profile')}
+        onPress={() => navigation.navigate('Auth')}
       >
-        <MaterialIcons name="person-outline" size={ICON_SIZE} color={ICON_COLOR} />
+        <Ionicons name="person-outline" size={ICON_SIZE} color={ICON_COLOR} />
         <Text style={styles.iconLabel}>Profile</Text>
       </TouchableOpacity>
     </View>

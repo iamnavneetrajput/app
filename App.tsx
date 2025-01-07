@@ -1,21 +1,22 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { StyleSheet, ScrollView, RefreshControl, LogBox } from 'react-native';
+import { StyleSheet, LogBox } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
-import AppNavigator from './src/navigation/AppNavigation';
-import BottomNavigation from './src/navigation/BottomNavigation';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import HomeScreen from './src/screens/HomeScreen';
+import SettingsScreen from './src/screens/SettingScreen';
+import SearchScreen from './src/screens/SearchScreen';
+import RecentScreen from './src/screens/RecentScreen';
+import ArticleScreen from './src/screens/ArticleScreen';
 import TopNav from './src/navigation/TopNavigation';
+import BottomNavigation from './src/navigation/BottomNavigation';
+import NotificationScreen from './src/screens/NotificatonScreen';
+import AuthScreen from './src/screens/AuthScreen';
+
+const Stack = createStackNavigator();
 
 const App = () => {
-  const [refreshing, setRefreshing] = useState(false);
-
-  const onRefresh = useCallback(() => {
-    setRefreshing(true);
-    // Simulate a network request
-    setTimeout(() => {
-      setRefreshing(false);
-    }, 2000);
-  }, []);
 
   useEffect(() => {
     // Disable all warnings in development mode
@@ -29,15 +30,20 @@ const App = () => {
           {/* Top Navigation */}
           <TopNav />
 
-          {/* Main App Content */}
-          {/* <ScrollView
-            contentContainerStyle={styles.appContent}
-            refreshControl={
-              <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-            }
-          > */}
-            <AppNavigator />
-          {/* </ScrollView> */}
+          {/* Stack Navigator */}
+          <Stack.Navigator
+            screenOptions={{
+              headerShown: false, // Disable header for all screens
+            }}
+          >
+            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="Settings" component={SettingsScreen} />
+            <Stack.Screen name="Search" component={SearchScreen} />
+            <Stack.Screen name="RecentScreen" component={RecentScreen} />
+            <Stack.Screen name="ArticleScreen" component={ArticleScreen} />
+            <Stack.Screen name="Notification" component={NotificationScreen} />
+            <Stack.Screen name="Auth" component={AuthScreen} />
+          </Stack.Navigator>
 
           {/* Bottom Navigation */}
           <BottomNavigation />
@@ -51,9 +57,6 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: '#fff',
-  },
-  appContent: {
-    flexGrow: 1,
   },
 });
 
